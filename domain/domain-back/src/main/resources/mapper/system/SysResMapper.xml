@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cc.tucci.boot.domain.system.mapper.SysResMapper">
+
+    <select id="selectByUid" parameterType="long"
+            resultType="cc.tucci.admin.domain.system.dataobject.SysResDO">
+        SELECT DISTINCT t1.id,
+                        t1.`name`,
+                        t1.type,
+                        t1.url,
+                        t1.pid,
+                        t1.res_char,
+                        t1.seq,
+                        t1.icon,
+                        t1.create_time,
+                        t1.update_time
+        FROM sys_res AS t1,
+             sys_role_res AS t2,
+             sys_user_role AS t3
+        WHERE t3.uid = #{uid}
+          AND t3.role_id = t2.role_id
+          AND t2.res_id = t1.id
+    </select>
+    <select id="selectByRoleId" resultType="cc.tucci.admin.domain.system.dataobject.SysResDO">
+        SELECT t1.id,
+               t1.`name`,
+               t1.`type`,
+               t1.url,
+               t1.pid,
+               t1.res_char,
+               t1.seq,
+               t1.icon,
+               t1.create_time,
+               t1.update_time
+        FROM sys_res t1,
+             sys_role_res t2
+        WHERE t2.role_id = #{roleId}
+          AND t2.res_id = t1.id
+    </select>
+</mapper>
