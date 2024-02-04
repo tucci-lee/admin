@@ -1,6 +1,6 @@
 # 工程简介
 
-[线上演示地址](http://admin.tucci.cn) \
+[线上演示地址](https://admin.tucci.cc) \
 账号：admin \
 密码：123456 \
 springboot + shiro \
