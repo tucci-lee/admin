@@ -23,6 +23,7 @@ spring:
         reset-enable: false
         login-username: root
         login-password: root
+        allow:
       web-stat-filter:
         enabled: true
         # 排除不必要拦截的url
